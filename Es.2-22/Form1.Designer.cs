@@ -28,12 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            txtSearch = new TextBox();
+            lstResults = new ListBox();
+            tmrDebounce = new System.Windows.Forms.Timer(components);
+            SuspendLayout();
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(12, 12);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Inserisci un cognome";
+            txtSearch.Size = new Size(267, 23);
+            txtSearch.TabIndex = 0;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // lstResults
+            // 
+            lstResults.FormattingEnabled = true;
+            lstResults.ItemHeight = 15;
+            lstResults.Location = new Point(12, 41);
+            lstResults.Name = "lstResults";
+            lstResults.Size = new Size(267, 394);
+            lstResults.TabIndex = 1;
+            // 
+            // tmrDebounce
+            // 
+            tmrDebounce.Interval = 500;
+            tmrDebounce.Tick += tmrDebounce_Tick;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(291, 450);
+            Controls.Add(lstResults);
+            Controls.Add(txtSearch);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox txtSearch;
+        private ListBox lstResults;
+        private System.Windows.Forms.Timer tmrDebounce;
     }
 }
